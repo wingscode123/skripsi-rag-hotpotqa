@@ -25,7 +25,7 @@ class HotpotQALoader:
             
             if limit:
                 data = data[:limit]
-                print(f"[Loader] Mode Testing: Hanya mengambil{limit} data awal.")
+                print(f"[Loader] Mode Testing: Hanya mengambil {limit} data awal.")
             
             return data
         except Exception as e:

@@ -23,3 +23,7 @@ build_vector_db.py
 check_setup.py
 test_ingest.py
 test_retrieval.py
+get_test_question.py
+run_indexing.py
+test_full_rag.py
+test_generator.py
