@@ -70,7 +70,7 @@ with st.sidebar:
         index=0,
         format_func=lambda x: x.upper() + "-RAG"
     )
-    top_k = st.slider("Jumlah Konteks (Top-K):", min_value=1, max_value=10, value=3)
+    top_k = st.slider("Jumlah Konteks (Top-K):", min_value=1, max_value=10, value=5)
     
     st.divider()
     st.info(

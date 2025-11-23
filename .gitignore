@@ -27,3 +27,4 @@ get_test_question.py
 run_indexing.py
 test_full_rag.py
 test_generator.py
+debug_graph.py
