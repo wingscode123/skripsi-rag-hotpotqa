@@ -70,7 +70,7 @@ class GraphRetriever:
                         seen_facts.add(fact)
             except: pass
 
-            # B. Cek Incoming (Tetangga -> Node) <-- INI YANG DITAMBAHKAN
+            # B. Cek Incoming (Tetangga -> Node)
             try:
                 predecessors = list(self.G.predecessors(node))
                 for neighbor in predecessors:

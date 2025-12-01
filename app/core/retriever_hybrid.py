@@ -17,7 +17,6 @@ class HybridRetriever:
         seen_texts = set()
 
         # 1. Ambil dari Graph (Coba ambil 50% dari jatah top_k)
-        # Kita ingin jawaban yang 'pasti' dulu
         graph_results = self.graph_retriever.retrieve(query)
         
         # Filter hasil graph yang duplikat atau kosong
@@ -30,7 +29,7 @@ class HybridRetriever:
                 seen_texts.add(sig)
 
         # 2. Tentukan berapa slot tersisa untuk Vector
-        # Jika Graph memberikan hasil yang banyak, kita tetap sisakan ruang untuk Vector
+        # Jika Graph memberikan hasil yang banyak, tetap sisakan ruang untuk Vector
         # Jika Graph kosong, Vector ambil alih semua slot (Fallback Mechanism)
         num_graph_used = len(valid_graph_results)
         
