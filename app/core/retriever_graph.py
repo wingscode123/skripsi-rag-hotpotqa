@@ -86,5 +86,4 @@ class GraphRetriever:
                         })
                         seen_facts.add(fact)
             except: pass
-
         return retrieved_info[:20]

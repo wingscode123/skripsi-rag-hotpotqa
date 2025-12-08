@@ -28,3 +28,4 @@ run_indexing.py
 test_full_rag.py
 test_generator.py
 debug_graph.py
+get_valid_questions.py

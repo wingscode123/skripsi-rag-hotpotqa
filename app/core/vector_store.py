@@ -61,7 +61,7 @@ class VectorStore:
     
     def save(self):
         """
-        Menyimpan indeks FAISS dan metadata ke disk
+        Menyimpan   indeks FAISS dan metadata ke disk
         """
         if self.index is None:
             print("[VectorStore] Indeks kosong, tidak ada yang disimpan.")
