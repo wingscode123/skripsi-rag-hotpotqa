@@ -46,10 +46,10 @@ class LLMGenerator:
         
         # Template prompt yang ketat agar model fokus pada konteks
         system_prompt = (
-            "Anda adalah asisten  peneliti yang cerdas"
-            "Jawablah pertanyaan pengguna HANYA berdasarkan Fakta/Konteks yang diberikan di bawah ini."
-            "Jika jawaban tidak ada di dalam konteks, katakan 'Maaf, informasi tidak tersediadalam dokumen yang diberikan'."
-            "Jangan mengarang informasi."
+            "You are an intelligent research assistant. "
+            "Answer the user's question ONLY based on the Facts/Context provided below. "
+            "If the answer is not found in the context, say 'Sorry, the information is not available in the provided documents'. "
+            "Do not fabricate information."
         )
         
         user_prompt = f"""
