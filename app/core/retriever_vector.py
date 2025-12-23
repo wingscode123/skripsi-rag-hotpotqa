@@ -2,7 +2,7 @@ from typing import List, Dict
 from app.core.vector_store import VectorStore
 
 class VectorRetriever:
-    def __init__(self, index_name="hotpot_v1"):
+    def __init__(self, index_name="hotpot_20k"):
         """
         Inisialisasi vector retriever.
         Memuat indeks FAISS yang sudah dibangun sebelumnya

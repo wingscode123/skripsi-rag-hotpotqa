@@ -3,8 +3,8 @@ from app.core.retriever_graph import GraphRetriever
 
 class HybridRetriever:
     def __init__(self):
-        self.vector_retriever = VectorRetriever(index_name="hotpot_v1")
-        self.graph_retriever = GraphRetriever(graph_file="knowledge_graph.pkl")
+        self.vector_retriever = VectorRetriever(index_name="hotpot_20k")
+        self.graph_retriever = GraphRetriever(graph_file="knowledge_graph_20k.pkl")
 
     def retrieve(self, query: str, top_k: int = 5, alpha: float = 0.5):
         """
@@ -29,14 +29,9 @@ class HybridRetriever:
                 seen_texts.add(sig)
 
         # Menentukan berapa slot tersisa untuk Vector
-        # Jika Graph memberikan hasil yang banyak, tetap sisakan ruang untuk Vector
-        # Jika Graph kosong, Vector ambil alih semua slot (Fallback Mechanism)
         num_graph_used = len(valid_graph_results)
-        
-        # Strategi: Minimal 2 slot untuk Vector (agar konteks naratif tetap ada)
         target_vector_count = max(2, top_k - num_graph_used)
         
-        # Jika Graph gagal total, Vector ambil semua slot (top_k)
         if num_graph_used == 0:
             target_vector_count = top_k
 
@@ -51,6 +46,5 @@ class HybridRetriever:
                 seen_texts.add(sig)
 
         # Menggabungkan: Graph (Reasoning) + Vector (Context)
-        # Urutan: Graph ditaruh di atas agar LLM membacanya sebagai "Fakta Kunci"
         combined_results = valid_graph_results[:top_k] + valid_vector_results
         return combined_results[:top_k]

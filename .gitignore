@@ -18,14 +18,3 @@ env/
 
 # Abaikan file log atau file sementara
 *.log
-build_graph.py
-build_vector_db.py
-check_setup.py
-test_ingest.py
-test_retrieval.py
-get_test_question.py
-run_indexing.py
-test_full_rag.py
-test_generator.py
-debug_graph.py
-get_valid_questions.py

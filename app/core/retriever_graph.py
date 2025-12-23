@@ -4,7 +4,7 @@ import networkx as nx
 from app.core.config import DATA_PROCESSED_DIR
 
 class GraphRetriever:
-    def __init__(self, graph_file="knowledge_graph.pkl"):
+    def __init__(self, graph_file="knowledge_graph_20k.pkl"):
         self.graph_path = os.path.join(DATA_PROCESSED_DIR, graph_file)
         self.G = None
         self.load_graph()
@@ -64,7 +64,7 @@ class GraphRetriever:
                     if fact not in seen_facts:
                         retrieved_info.append({
                             "text": fact, 
-                            "source_id": edge_data.get('source_id'), 
+                            "chunk_id": edge_data.get('source_id'), 
                             "score": 1.0, "type": "graph_out", "title": f"Graph: {node}"
                         })
                         seen_facts.add(fact)

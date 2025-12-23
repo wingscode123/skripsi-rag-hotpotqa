@@ -1,21 +1,42 @@
 import os
 import torch
 
-# Lokasi absolut dari folder root project
+# --- SETUP DIREKTORI DASAR ---
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Path ke folder data
+# Path ke folder data mentah & model
 DATA_RAW_DIR = os.path.join(BASE_DIR, "data", "raw")
-DATA_PROCESSED_DIR = os.path.join(BASE_DIR, "data", "processed")
 MODEL_DIR = os.path.join(BASE_DIR, "models")
 
+# --- SETUP DATA PROCESSED ---
+DATA_PROCESSED_DIR = os.path.join(BASE_DIR, "data", "processed", "batch_20k")
 os.makedirs(DATA_PROCESSED_DIR, exist_ok=True)
 
-# Parameter Global
+# --- DEFINISI NAMA FILE (SUFFIX 20K) ---
+SUFFIX = "20k"
+
+# Nama file spesifik (otomatis mengikuti suffix)
+VECTOR_INDEX_NAME = f"hotpot_{SUFFIX}"                # hotpot_20k (FAISS otomatis nambah .faiss)
+METADATA_NAME     = f"hotpot_{SUFFIX}_meta.pkl"       # hotpot_20k_meta.pkl
+GRAPH_PKL_NAME    = f"knowledge_graph_{SUFFIX}.pkl"   # knowledge_graph_20k.pkl
+TRIPLETS_CSV_NAME = f"triplets_{SUFFIX}.csv"          # triplets_20k.csv
+LINKING_CSV_NAME  = f"entity_linking_{SUFFIX}.csv"    # entity_linking_20k.csv
+
+# --- PARAMETER GLOBAL ---
 CHUNK_SIZE = 200
 CHUNK_OVERLAP = 50
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL_FILE = "mistral-7b-instruct-v0.2.Q4_K_M.gguf"
 
+# Setup Model LLM
+LLM_MODEL_FILE = "mistral-7b-instruct-v0.2.Q4_K_M.gguf"
+LLM_MODEL_PATH = os.path.join(MODEL_DIR, LLM_MODEL_FILE)
+
+# Cek Device (GPU Laptop vs CPU)
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-print(f"[Config] Perangkat yang digunakan: {DEVICE}")
+
+print(f"==================================================")
+print(f"[Config] Root Dir       : {BASE_DIR}")
+print(f"[Config] Data Dir       : {DATA_PROCESSED_DIR}")
+print(f"[Config] Target Suffix  : {SUFFIX}")
+print(f"[Config] Perangkat      : {DEVICE}")
+print(f"==================================================")
