@@ -1,7 +1,6 @@
 import sys
 import os
 
-# --- PATH FIX: Agar bisa import 'app' dari folder parent ---
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 if parent_dir not in sys.path:
@@ -46,7 +45,7 @@ def plot_radar_chart(summary_df, output_path):
         # Setup variabel untuk plot lingkaran
         N = len(categories)
         angles = [n / float(N) * 2 * np.pi for n in range(N)]
-        angles += angles[:1] # Menutup loop agar grafik nyambung
+        angles += angles[:1]
 
         # Inisialisasi Plot Polar
         plt.figure(figsize=(8, 8))
@@ -94,7 +93,7 @@ def main():
     # --- 1. KONFIGURASI ---
     JUMLAH_SAMPEL = 50 
     OUTPUT_FILE = "eval_metrics_20k.csv"
-    OUTPUT_CHART = "eval_radar_chart.png" # Nama file output gambar
+    OUTPUT_CHART = "eval_radar_chart.png"
     
     OUTPUT_PATH = os.path.join(DATA_PROCESSED_DIR, OUTPUT_FILE)
     CHART_PATH = os.path.join(DATA_PROCESSED_DIR, OUTPUT_CHART)

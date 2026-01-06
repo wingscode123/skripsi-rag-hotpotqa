@@ -15,12 +15,12 @@ os.makedirs(DATA_PROCESSED_DIR, exist_ok=True)
 # --- DEFINISI NAMA FILE (SUFFIX 20K) ---
 SUFFIX = "20k"
 
-# Nama file spesifik (otomatis mengikuti suffix)
-VECTOR_INDEX_NAME = f"hotpot_{SUFFIX}"                # hotpot_20k (FAISS otomatis nambah .faiss)
-METADATA_NAME     = f"hotpot_{SUFFIX}_meta.pkl"       # hotpot_20k_meta.pkl
-GRAPH_PKL_NAME    = f"knowledge_graph_{SUFFIX}.pkl"   # knowledge_graph_20k.pkl
-TRIPLETS_CSV_NAME = f"triplets_{SUFFIX}.csv"          # triplets_20k.csv
-LINKING_CSV_NAME  = f"entity_linking_{SUFFIX}.csv"    # entity_linking_20k.csv
+# Nama file spesifik
+VECTOR_INDEX_NAME = f"hotpot_{SUFFIX}"                
+METADATA_NAME     = f"hotpot_{SUFFIX}_meta.pkl"       
+GRAPH_PKL_NAME    = f"knowledge_graph_{SUFFIX}.pkl"   
+TRIPLETS_CSV_NAME = f"triplets_{SUFFIX}.csv"          
+LINKING_CSV_NAME  = f"entity_linking_{SUFFIX}.csv"
 
 # --- PARAMETER GLOBAL ---
 CHUNK_SIZE = 200

@@ -38,7 +38,7 @@ class GraphRetriever:
             if node_str in query_clean:
                 start_nodes.append(node)
                 continue
-            # Keyword match (minimal 2 token cocok jika nama panjang)
+            # Keyword match
             node_tokens = set(node_str.split())
             if len(node_tokens.intersection(keywords)) >= 1:
                  if len(node_tokens) > 2 and len(node_tokens.intersection(keywords)) < 2:

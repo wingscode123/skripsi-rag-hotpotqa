@@ -5,7 +5,6 @@ import pandas as pd
 import random
 
 # --- SETUP PATH ---
-# Ambil direktori tempat dashboard.py berada (Root Project)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
     sys.path.insert(0, current_dir)
@@ -73,9 +72,7 @@ with st.sidebar:
         if st.button("🎲 Ambil Soal Acak"):
             # Ambil 1 baris acak
             random_row = df_questions.sample(1).iloc[0]
-            # Simpan ke session state agar masuk ke input box
             st.session_state.input_text = random_row['question']
-            # Tampilkan contekan jawaban asli (Opsional, untuk debug)
             st.info(f"**Jawaban Asli (Gold):** {random_row['answer']}")
     else:
         st.warning("File 'closed_set_test_questions.csv' belum ditemukan.")
@@ -87,8 +84,8 @@ with st.sidebar:
         st.rerun()
 
 # --- MAIN PAGE ---
-st.title("🤖 Demo Skripsi: Hybrid RAG (20k Data)")
-st.caption("Eksperimen Closed-Set pada Dataset HotpotQA")
+st.title("🤖 Dashboard: Demo Skripsi RAG")
+st.caption("By: Radithya Fawwaz Aydin")
 
 # Load Pipeline
 with st.spinner("Memuat Index 20k & Model..."):
@@ -113,9 +110,6 @@ user_input = st.chat_input("Ketik pertanyaan atau gunakan tombol dadu di sidebar
 
 # Handle Input dari Tombol Sidebar (Override)
 if st.session_state.input_text and not user_input:
-    # Jika ada input dari tombol dadu, kita paksa jadi user_input
-    # Sayangnya st.chat_input agak tricky untuk di-set value-nya secara programmatik langsung trigger.
-    # Jadi kita tampilkan instruksi:
     st.info(f"👇 **Pertanyaan Terpilih:**\n\n{st.session_state.input_text}\n\n*Silakan Copy-Paste ke kolom chat di bawah jika belum otomatis masuk.*")
 
 # Logika Chat

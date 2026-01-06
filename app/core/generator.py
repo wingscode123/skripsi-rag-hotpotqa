@@ -71,7 +71,7 @@ class LLMGenerator:
         Menghasilkan jawaban dari LLM
         """
         if not contexts:
-            return "Maaf, tidak ada konteks yang ditemukan untuk menjawab pertanyaan ini."
+            return "Sorry, the information is not available in the provided documents"
         
         prompt = self._format_prompt(query, contexts)
         

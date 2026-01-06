@@ -44,7 +44,7 @@ class RAGPipeline:
         # Jika tidak ada konteks, beri tahu user
         if not contexts:
             return {
-                "answer": "Maaf, sistem tidak ditemukan informasi relevan dalam basis pengetahuna untuk menjawab pertanyaaan ini.",
+                "answer": "Sorry, the system could not find relevant information in the knowledge base to answer this question.",
                 "contexts": [],
                 "latency": time.time() -start_time
             }

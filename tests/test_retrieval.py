@@ -19,7 +19,7 @@ def main():
         for r in res_g:
             print(f"- [Graph] {r['text']}")
     else:
-        print("- Tidak ada entitas query yang ditemukan di graf (wajar untuk sample kecil).")
+        print("- Tidak ada entitas query yang ditemukan di graf.")
     
     print(f"\n==== Test Hybrid RAG =====")
     hr = HybridRetriever()

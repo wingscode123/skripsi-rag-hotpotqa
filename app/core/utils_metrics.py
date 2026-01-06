@@ -34,18 +34,16 @@ class LocalRagasEvaluator:
     def __init__(self, generator_model):
         """
         Menggunakan model LLM yang sama (Mistral) untuk menjadi Juri.
-        Ini menghemat VRAM karena tidak perlu load model baru.
         """
         self.llm = generator_model.llm # Instance llama-cpp
 
     def evaluate_faithfulness(self, answer, contexts):
         """
         Menilai Faithfulness: Apakah jawaban hanya berasal dari konteks? (0.0 - 1.0)
-        Definisi Ragas: Answer should be grounded in the given context[cite: 2057].
         """
         if not contexts: return 0.0
         
-        context_text = "\n".join([c['text'] for c in contexts])[:1000] # Potong agar tidak kepanjangan
+        context_text = "\n".join([c['text'] for c in contexts])[:1000]
         
         prompt = f"""[INST] You are an impartial judge. Evaluate if the ANSWER is derived ONLY from the CONTEXT provided.
         
@@ -64,7 +62,6 @@ class LocalRagasEvaluator:
     def evaluate_relevancy(self, query, answer):
         """
         Menilai Answer Relevancy: Apakah jawaban nyambung dengan pertanyaan? (0.0 - 1.0)
-        Definisi Ragas: Answer should address the actual question[cite: 2061].
         """
         prompt = f"""[INST] You are an impartial judge. Evaluate if the ANSWER is relevant and directly addresses the QUESTION.
         

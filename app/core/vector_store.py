@@ -90,13 +90,12 @@ class VectorStore:
             if idx < len(self.chunks) and idx >= 0:
                 item = self.chunks[idx]
                 
-                # --- [PERBAIKAN UTAMA DI SINI] ---
                 # Menggunakan .get() agar aman. 
                 # Prioritas: 'chunk_id' -> 'id' -> 'unknown'
                 c_id = item.get('chunk_id', item.get('id', f'unknown_{idx}'))
                 
                 results.append({
-                    "chunk_id": c_id,        # Kita standarkan output key jadi 'chunk_id'
+                    "chunk_id": c_id,        
                     "text": item.get('text', ''),
                     "title": item.get('title', 'Untitled'),
                     "score": float(distances[0][i]),
